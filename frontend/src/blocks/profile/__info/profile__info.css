@@ -1,21 +1,10 @@
-.profile__info {
-  padding-left: 30px;
-  max-width: 366px;
-  grid-area: info;
-  display: grid;
-  align-self: center;
-  row-gap: 11px;
-  column-gap: 18px;
-  grid-template-areas:
-    'title edit-button'
-    'subtitle subtitle';
+.profile__info{
+  display: flex;
+  flex-direction: column;
 }
-
-@media screen and (max-width: 800px) {
-  .profile__info {
-    padding-top: 22.25px;
-    text-align: center;
-    padding-left: 0;
-    column-gap: 0;
+@media screen and (max-width: 750px){
+  .profile__info{
+    align-items: center;
+    margin-bottom: 36px;
   }
 }

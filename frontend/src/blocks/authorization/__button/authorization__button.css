@@ -1,0 +1,29 @@
+.authorization__button{
+    cursor: pointer;
+  background: #FFFFFF;
+  box-shadow: none;
+  margin-top: 186px;
+  min-height: 50px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  min-width: 260px;
+  color: #000000;
+  font-style: normal;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.22;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.authorization__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1280px){
+  .authorization__button{
+    max-width: calc(260px + (358 - 260) * ((100vw - 320px) / (1280 - 320)));
+  }
+}

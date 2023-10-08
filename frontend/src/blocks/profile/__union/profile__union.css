@@ -1,0 +1,13 @@
+.profile__union{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+@media screen and (max-width: 750px){
+  .profile__union{
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

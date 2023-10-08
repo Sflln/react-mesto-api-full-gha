@@ -1,0 +1,11 @@
+.popup__img-auth{
+    margin: 0;
+    width: 120px;
+    padding-top: 60px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1280px){
+    .popup__img-auth{
+        padding-top: calc(50px + (60 - 50) * ((100vw - 320px) / (1280 - 320)));
+    }
+  }

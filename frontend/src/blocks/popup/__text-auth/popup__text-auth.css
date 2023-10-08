@@ -1,0 +1,17 @@
+.popup__text-auth{
+    margin: 32px 0 60px;
+  text-align: center;
+  color: #000000;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1280px){
+  .popup__text-auth{
+      margin-bottom: calc(50px + (60 - 50) * ((100vw - 320px) / (1280 - 320)));
+      font-size: calc(20px + (24 - 20) * ((100vw - 320px) / (1280 - 320)));
+  }
+}

@@ -1,14 +1,18 @@
-.popup__title {
+.popup__title{
   margin: 0;
-  color: #000;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 900;
   font-size: 24px;
-  font-weight: inherit;
-  line-height: calc(29 / 24 * 100%);
+  line-height: 29px;
+  margin-top: 34px;
+  margin-bottom: 48px;
 }
-
-@media screen and (max-width: 696px) {
-  .popup__title {
-    font-size: 18px;
-    line-height: calc(22 / 18 * 100%);
+@media screen and (max-width: 534px){
+  .popup__title{
+    font-size: calc(18px + (24 - 18) * ((100vw - 320px) / (534 - 320)));
+    line-height: calc(22px + (29 - 22) * ((100vw - 320px) / (534 - 320)));
+    margin-top: calc(25px + (34 - 25) * ((100vw - 320px) / (534 - 320)));
+    margin-bottom: calc(75px + (48 - 75) * ((100vw - 320px) / (534 - 320)));
   }
 }

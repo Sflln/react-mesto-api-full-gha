@@ -1,0 +1,3 @@
+.popup__button-close_avatar{
+  top: calc(50% - (32px + 8px + (272px / 2)));
+}

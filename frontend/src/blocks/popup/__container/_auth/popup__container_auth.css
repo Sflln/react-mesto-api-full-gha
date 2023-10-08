@@ -1,0 +1,6 @@
+.popup__container_auth{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,8 @@
+.popup__input-error_active{
+    display: block;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}
