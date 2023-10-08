@@ -1,38 +1,27 @@
 const router = require('express').Router();
-const { celebrate, Joi } = require('celebrate');
+const { validateUser, validateUserProfile, validateUserAvatar } = require('../middlewares/validation');
 
-const { URL_REGEX } = require('../utils/constants');
 const {
-  getUsersInfo,
-  getUserInfo,
-  getCurrentUserInfo,
-
-  setUserInfo,
-  setUserAvatar,
+  getUsers,
+  findUser,
+  findCurrentUser,
+  updateUserAvatar,
+  updateUserProfile,
 } = require('../controllers/users');
 
-router.get('/', getUsersInfo);
-router.get('/me', getCurrentUserInfo);
+// возвращает всех пользователей
+router.get('/', getUsers);
 
-router.get('/:id', celebrate({
-  params: Joi.object().keys({
-    id: Joi.string().length(24).hex().required(),
-  }),
-}), getUserInfo);
+// возвращает информацию о текущем пользователе
+router.get('/me', findCurrentUser);
 
-router.patch('/me', celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().min(2).max(30).required(),
-    about: Joi.string().min(2).max(30).required(),
-  }),
-}), setUserInfo);
+// возвращает пользователя по _id
+router.get('/:userId', validateUser, findUser);
 
-router.patch('/me/avatar', celebrate({
-  body: Joi.object().keys({
-    avatar: Joi
-      .string()
-      .pattern(URL_REGEX).required(),
-  }),
-}), setUserAvatar);
+// обновляет профиль
+router.patch('/me', validateUserProfile, updateUserProfile);
+
+// обновляет аватар
+router.patch('/me/avatar', validateUserAvatar, updateUserAvatar);
 
 module.exports = router;

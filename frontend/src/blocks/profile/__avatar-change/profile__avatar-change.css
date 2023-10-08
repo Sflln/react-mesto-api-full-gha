@@ -1,7 +1,0 @@
-.profile__avatar-change{
-  position: relative;
-}
-
-.profile__avatar-change:hover .profile__button-avatar{
-    display: block;
-  }
