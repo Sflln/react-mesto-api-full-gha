@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.elrouss.mesto.nomoredomains.work';
+const BASE_URL = 'https://backend.mesto.nomoredomainsrocks.ru';
 
 function checkResponse(res) {
   if (res.ok) {
