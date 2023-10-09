@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this._baseUrl = 'https://backend.mesto.nomoredomainsrocks.co';
+    this._baseUrl = 'https://api.elrouss.mesto.nomoredomains.work';
   };
 
   _request(url, options) {

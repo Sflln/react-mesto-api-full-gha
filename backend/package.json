@@ -1,41 +1,47 @@
 {
-  "name": "express-mesto",
-  "homepage": "./",
-  "author": {
-    "name": "Aleksandra Shevchenko",
-    "email": "shevdor@yandex.ru"
-  },
-  "description": "interactive application with photos from users",
+  "name": "express-mesto-gha",
   "version": "1.0.0",
+  "description": "Yandex Praktikum's backend-project",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
     "lint": "npx eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elrouss/express-mesto-gha.git"
+  },
+  "keywords": [
+    "Yandex",
+    "Praktikum",
+    "backend"
+  ],
+  "author": "Boris Zashliapin",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^7.22.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.7"
+  "bugs": {
+    "url": "https://github.com/elrouss/express-mesto-gha/issues"
   },
+  "homepage": "https://github.com/elrouss/express-mesto-gha#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "celebrate": "^14.0.0",
-    "cookie-parser": "^1.4.5",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "celebrate": "^15.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-winston": "^4.1.0",
-    "helmet": "^4.4.1",
-    "joi-authorization-header": "^2.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.0",
-    "validator": "^13.5.2",
-    "winston": "^3.3.3"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "express-winston": "^4.2.0",
+    "helmet": "^6.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.2",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-require": "^0.0.1",
+    "nodemon": "^2.0.20"
   }
 }

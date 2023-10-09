@@ -1,33 +1,23 @@
 const router = require('express').Router();
 
+const routeSignup = require('./signup');
+const routeSignin = require('./signin');
+
 const auth = require('../middlewares/auth');
-const { validateSignup, validateSignin, validateAuth } = require('../middlewares/validation');
-const { createUser, login } = require('../controllers/users');
-const cardRouter = require('./cards');
-const userRouter = require('./users');
-const NotFoundError = require('../errors/notFoundError');
 
-// роуты, не требующие авторизации
-// роут регистрации
-router.post('/signup', validateSignup, createUser);
+const routeUsers = require('./users');
+const routeCards = require('./cards');
 
-// роут авторизации
-router.post('/signin', validateSignin, login);
+const NotFoundError = require('../errors/NotFoundError');
 
-// мидлвэр авторизации
-router.use(validateAuth, auth);
+router.use('/', routeSignup);
+router.use('/', routeSignin);
 
-// роуты требующие авторизации
-router.use('/users', userRouter);
-router.use('/cards', cardRouter);
+router.use(auth);
 
-// роут выхода
-router.get('/logout', (req, res) => {
-  res.clearCookie('token').send();
-});
+router.use('/users', routeUsers);
+router.use('/cards', routeCards);
 
-router.use((req, res, next) => {
-  next(new NotFoundError(`Запрашиваемый ресурс по адресу '${req.path}' не найден`));
-});
+router.use((req, res, next) => next(new NotFoundError('Страницы по запрошенному URL не существует')));
 
 module.exports = router;

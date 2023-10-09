@@ -1,35 +1,50 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
-// описание схемы карточки
-const cardSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'поле с названием карточки не может быть пустым'],
-    minlength: [2, 'название карточки не может быть короче двух символов'],
-    maxlength: [30, 'название карточки не может быть длиннее 30 символов'],
-  },
-  link: {
-    type: String,
-    required: [true, 'ссылка на фото обязательна'],
-    validate: {
-      validator: (v) => validator.isURL(v),
-      message: 'Неверный формат ссылки на изображение',
+const { Schema } = mongoose;
+const { ObjectId } = mongoose.Schema.Types;
+
+const { URL_REGEX } = require('../utils/constants');
+
+const cardSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      validate: {
+        validator: ({ length }) => length >= 2 && length <= 30,
+        message: 'Имя карточки должно быть длиной от 2 до 30 символов',
+      },
+    },
+
+    link: {
+      type: String,
+      required: true,
+      validate: {
+        validator: (url) => URL_REGEX.test(url),
+        message: 'Требуется ввести URL',
+      },
+    },
+
+    owner: {
+      type: ObjectId,
+      ref: 'user',
+      required: true,
+    },
+
+    likes: [{
+      type: ObjectId,
+      ref: 'user',
+      default: [],
+    }],
+
+    createdAt: {
+      type: Date,
+      default: Date.now,
     },
   },
-  owner: {
-    type: String,
-    required: true,
+  {
+    versionKey: false,
   },
-  likes: [{
-    type: mongoose.Schema.Types.ObjectId,
-    default: [],
-  }],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+);
 
-// создаём модель и экспортируем её
 module.exports = mongoose.model('card', cardSchema);
