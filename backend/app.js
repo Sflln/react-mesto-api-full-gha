@@ -10,13 +10,13 @@ const { errors } = require('celebrate');
 const limiter = require('./middlewares/rateLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const router = require('./routes/index.js');
+const router = require('./routes/index');
 
 const errorHandler = require('./middlewares/errorHandler');
 
 const { MONGODB_URL } = require('./utils/constants');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const app = express();
 
