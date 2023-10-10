@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this._baseUrl = 'https://auth.nomoreparties.co';
+    this._baseUrl = 'https://backend.mesto.nomoredomainsrocks.ru';
   };
 
   _request(url, options) {
