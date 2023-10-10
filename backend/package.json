@@ -8,21 +8,13 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/elrouss/express-mesto-gha.git"
-  },
   "keywords": [
     "Yandex",
     "Praktikum",
     "backend"
   ],
-  "author": "Boris Zashliapin",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/elrouss/express-mesto-gha/issues"
-  },
-  "homepage": "https://github.com/elrouss/express-mesto-gha#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
