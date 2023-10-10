@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
-const routeSignup = require('./signup');
-const routeSignin = require('./signin');
+const routeSignup = require('./signup.js');
+const routeSignin = require('./signin.js');
+S
+const auth = require('../middlewares/auth.js');
 
-const auth = require('../middlewares/auth');
+const routeUsers = require('./users.js');
+const routeCards = require('./cards.js');
 
-const routeUsers = require('./users');
-const routeCards = require('./cards');
-
-const NotFoundError = require('../errors/NotFoundError');
+const NotFoundError = require('../errors/NotFoundError.js');
 
 router.use('/', routeSignup);
 router.use('/', routeSignin);

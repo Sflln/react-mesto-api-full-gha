@@ -10,7 +10,7 @@ const { errors } = require('celebrate');
 const limiter = require('./middlewares/rateLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const router = require('./routes/index');
+const router = require('./routes/index.js');
 
 const errorHandler = require('./middlewares/errorHandler');
 
