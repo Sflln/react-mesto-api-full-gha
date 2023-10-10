@@ -4,10 +4,10 @@ import { useEffect } from "react";
 
 export default function ConfirmCardDeletionPopup({ activeCardId, onCardDelete, isOpened, popupPackProps }) {
   const { isValid, setIsValid } = useFormWithValidation();
-  
+
   useEffect(() => {
     if (isOpened) setIsValid(true);
-  }, [isOpened]);
+  }, [isOpened, setIsValid]);
 
   function handleSubmit(evt) {
     evt.preventDefault();

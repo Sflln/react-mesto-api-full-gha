@@ -16,7 +16,7 @@ export default function EditProfilePopup({ onUpdateUser, isOpened, popupPackProp
       setValues({ 'name': currentUser.name, 'about': currentUser.about });
       setIsValid(true);
     };
-  }, [isOpened]);
+  }, [currentUser.about, currentUser.name, isOpened, resetForm, setIsValid, setValues]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
