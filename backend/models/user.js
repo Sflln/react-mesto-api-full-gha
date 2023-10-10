@@ -5,6 +5,8 @@ const { Schema } = mongoose;
 
 const { URL_REGEX } = require('../utils/constants');
 
+const UnauthorizedError = require('../errors/UnauthorizedError');
+
 const userSchema = new Schema(
   {
     email: {
@@ -21,28 +23,20 @@ const userSchema = new Schema(
       type: String,
       required: true,
       select: false,
-      validate: {
-        validator: ({ length }) => length >= 6,
-        message: 'Пароль должен состоять минимум из 6 символов',
-      },
     },
 
     name: {
       type: String,
       default: 'Жак-Ив Кусто',
-      validate: {
-        validator: ({ length }) => length >= 2 && length <= 30,
-        message: 'Имя пользователя должно быть длиной от 2 до 30 символов',
-      },
+      minlength: [2, 'имя пользователя не может быть короче двух символов'],
+      maxlength: [30, 'имя пользователя не может быть длиннее 30 символов'],
     },
 
     about: {
       type: String,
       default: 'Исследователь',
-      validate: {
-        validator: ({ length }) => length >= 2 && length <= 30,
-        message: 'Информация о пользователе должна быть длиной от 2 до 30 символов',
-      },
+      minlength: [2, 'информация о пользователе не может быть короче двух символов'],
+      maxlength: [30, 'информация о пользователе не может быть длиннее 30 символов'],
     },
 
     avatar: {
@@ -68,11 +62,11 @@ const userSchema = new Schema(
                 .then((matched) => {
                   if (matched) return user;
 
-                  return Promise.reject();
+                  return Promise.reject(new UnauthorizedError('Неправильные почта или пароль'));
                 });
             }
 
-            return Promise.reject();
+            return Promise.reject(new UnauthorizedError('Неправильные почта или пароль'));
           });
       },
     },

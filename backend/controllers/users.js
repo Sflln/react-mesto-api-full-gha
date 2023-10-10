@@ -53,18 +53,15 @@ function loginUser(req, res, next) {
 
   User
     .findUserByCredentials(email, password)
+    .orFail(new UnauthorizedError('Неправильные почта или пароль'))
     .then(({ _id: userId }) => {
-      if (userId) {
-        const token = jwt.sign(
-          { userId },
-          NODE_ENV === 'production' ? SECRET_SIGNING_KEY : 'dev-secret',
-          { expiresIn: '7d' },
-        );
+      const token = jwt.sign(
+        { userId },
+        NODE_ENV === 'production' ? SECRET_SIGNING_KEY : 'dev-secret',
+        { expiresIn: '7d' },
+      );
 
-        return res.send({ token });
-      }
-
-      throw new UnauthorizedError('Неправильные почта или пароль');
+      return res.send({ token });
     })
     .catch(next);
 }
@@ -136,7 +133,7 @@ function setUserInfo(req, res, next) {
       throw new NotFoundError('Пользователь с таким id не найден');
     })
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new InaccurateDataError('Переданы некорректные данные при обновлении профиля пользователя'));
       } else {
         next(err);
@@ -165,7 +162,7 @@ function setUserAvatar(req, res, next) {
       throw new NotFoundError('Пользователь с таким id не найден');
     })
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new InaccurateDataError('Переданы некорректные данные при обновлении профиля пользователя'));
       } else {
         next(err);
